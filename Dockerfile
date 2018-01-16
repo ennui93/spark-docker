@@ -3,7 +3,7 @@ FROM alpine:3.5
 LABEL MAINTAINER Cristòfol Torrens Morell "piffall@gmail.com"
 LABEL CONTRIBUTOR Vicenç Juan Tomàs Monserrat "vtomasr5@gmail.com"
 
-LABEL STB_VERSION=1.0
+LABEL STB_VERSION=1.1.0
 LABEL SPARK_VERSION=2.2.1
 LABEL HADOOP_VERSION=2.7
 
@@ -15,7 +15,7 @@ RUN \
 WORKDIR /opt
 
 # Install SBT
-ENV SBT_VERSION 1.0
+ENV SBT_VERSION 1.1.0
 ENV SBT_HOME /opt/sbt
 RUN \
     mkdir -p /opt && \
