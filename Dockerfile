@@ -32,7 +32,7 @@ ENV HADOOP_VERSION 2.7
 ENV SPARK_HOME /usr/spark-${SPARK_VERSION}
 RUN \
     mkdir ${SPARK_HOME} && \
-    wget https://www.apache.org/dyn/closer.lua/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && \
+    wget http://apache.rediris.es/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && \
     tar vxzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz --strip 1 -C ${SPARK_HOME} && \
     rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 
