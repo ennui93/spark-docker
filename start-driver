@@ -9,7 +9,6 @@ if [[ $MODE == "client" && $JAR =~ ^http ]]; then
 fi
 
 # Spark submit
-spark-submit --class ${MAIN_CLASS} \
-             --master ${MASTER} \
+spark-submit --master ${MASTER} \
              ${SPARK_ARGS} \
              ${JAR} $@

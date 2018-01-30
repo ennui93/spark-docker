@@ -1,4 +1,4 @@
-FROM python:3.6-alpine3.7
+FROM ubuntu:16.04
 
 LABEL MAINTAINER Cristòfol Torrens Morell "piffall@gmail.com"
 LABEL CONTRIBUTOR Vicenç Juan Tomàs Monserrat "vtomasr5@gmail.com"
@@ -9,8 +9,15 @@ LABEL HADOOP_VERSION=2.7
 
 # Install required packages
 RUN \
-    apk update && \
-    apk add openjdk8 wget bash tar gzip dcron
+    apt-get update && \
+    apt-get -y install software-properties-common && \
+    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+    add-apt-repository -y ppa:webupd8team/java && \
+    add-apt-repository ppa:jonathonf/python-3.6 && \
+    apt-get update && \
+    apt-get install -y oracle-java8-installer wget python3.6 && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/cache/oracle-jdk8-installer
 
 WORKDIR /opt
 
@@ -45,5 +52,5 @@ COPY start-driver /usr/bin/start-driver
 ENV PATH $PATH:${SPARK_HOME}/bin
 
 # Set Java HOME
-ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
