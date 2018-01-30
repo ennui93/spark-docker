@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:3.7
 
 LABEL MAINTAINER Cristòfol Torrens Morell "piffall@gmail.com"
 LABEL CONTRIBUTOR Vicenç Juan Tomàs Monserrat "vtomasr5@gmail.com"
