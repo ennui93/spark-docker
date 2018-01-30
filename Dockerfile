@@ -10,13 +10,14 @@ LABEL HADOOP_VERSION=2.7
 # Install required packages
 RUN \
     apt-get update && \
-    apt-get -y install software-properties-common && \
+    apt-get -y install software-properties-common python3 python3-dev python3-pip && \
     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
     add-apt-repository -y ppa:webupd8team/java && \
-    apt-get install python python-pip python3 python3-pip && \
     add-apt-repository ppa:jonathonf/python-3.6 && \
     apt-get update && \
     apt-get install -y oracle-java8-installer wget python3.6 && \
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 20 && \
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 10 && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /var/cache/oracle-jdk8-installer
 
