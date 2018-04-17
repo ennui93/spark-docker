@@ -4,7 +4,7 @@ version: '3'
 services:
 
   master:
-    image: logitravel/spark-docker:2.0
+    image: piffall/spark-docker
     command: start-master
     environment:
       MASTER_HOSTNAME: 0.0.0.0
@@ -20,7 +20,7 @@ services:
       - "7077:7077"
 
   worker:
-    image: logitravel/spark-docker:2.0
+    image: piffall/spark-docker
     links:
       - master:master
     depends_on:
@@ -30,15 +30,15 @@ services:
     environment:
       MASTER: spark://master:7077
       SPARK_CONF_DIR: /conf
-      SPARK_WORKER_CORES: 2
-      SPARK_WORKER_MEMORY: 512m
+      SPARK_WORKER_CORES: 4
+      SPARK_WORKER_MEMORY: 8g
       SPARK_WORKER_PORT: 8881
       SPARK_WORKER_WEBUI_PORT: 8081
       SPARK_PUBLIC_DNS: localhost
     networks:
       - spark
     deploy:
-      replicas: 4
+      replicas: 2
     command: start-worker
 
 networks:
