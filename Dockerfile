@@ -15,7 +15,7 @@ ENV SBT_HOME /opt/sbt
 RUN \
     mkdir -p /opt && \
     wget "https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${SBT_VERSION}.tgz" && \
-    printf "2fbd592b1cfd7bc3612154a32925d5843b602490e8c8977a53fa86b35e308341 sbt-${SBT_VERSION}.tgz\n" | sha256sum -c - && \
+    printf "2fbd592b1cfd7bc3612154a32925d5843b602490e8c8977a53fa86b35e308341 *sbt-${SBT_VERSION}.tgz\n" | sha256sum -c - && \
     tar -zvxf sbt-${SBT_VERSION}.tgz -C /opt && \
     rm sbt-${SBT_VERSION}.tgz
 
@@ -28,8 +28,8 @@ ENV HADOOP_VERSION 2.7
 ENV SPARK_HOME /usr/spark-${SPARK_VERSION}
 RUN \
     mkdir ${SPARK_HOME} && \
-    wget http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && \
-    printf "79fb8285546670923a66082324bf56e99a7201476a52dea908804ddfa04f16c8 spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz\n" | sha256sum -c - && \
+    wget "http://apache.rediris.es/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" && \
+    printf "79fb8285546670923a66082324bf56e99a7201476a52dea908804ddfa04f16c8 *spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz\n" | sha256sum -c - && \
     tar vxzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz --strip 1 -C ${SPARK_HOME} && \
     rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 

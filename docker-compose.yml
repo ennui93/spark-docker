@@ -4,7 +4,7 @@ version: '3'
 services:
 
   master:
-    image: piffall/spark-docker
+    image: ennui93/spark-docker
     command: start-master
     environment:
       MASTER_HOSTNAME: 0.0.0.0
@@ -20,7 +20,7 @@ services:
       - "7077:7077"
 
   worker:
-    image: piffall/spark-docker
+    image: ennui93/spark-docker
     links:
       - master:master
     depends_on:
