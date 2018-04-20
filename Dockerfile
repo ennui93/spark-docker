@@ -23,13 +23,13 @@ RUN \
 ENV PATH $PATH:${SBT_HOME}/bin
 
 # Install Spark
-ENV SPARK_VERSION 2.2.1
+ENV SPARK_VERSION 2.3.0
 ENV HADOOP_VERSION 2.7
 ENV SPARK_HOME /usr/spark-${SPARK_VERSION}
 RUN \
     mkdir ${SPARK_HOME} && \
     wget "http://apache.rediris.es/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" && \
-    printf "79fb8285546670923a66082324bf56e99a7201476a52dea908804ddfa04f16c8 *spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz\n" | sha256sum -c - && \
+    printf "5cfbc77d140454c895f2d8125c0a751465f53cbe12720da763b1785d25c63f05 *spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz\n" | sha256sum -c - && \
     tar vxzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz --strip 1 -C ${SPARK_HOME} && \
     rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 
